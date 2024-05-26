@@ -19,7 +19,6 @@ public class Task {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = true)
     private String description;
 
     private LocalDateTime startDate;
