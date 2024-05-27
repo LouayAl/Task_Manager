@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 public class UserServiceTest {
@@ -49,6 +50,14 @@ public class UserServiceTest {
 
         //Assert
         assertEquals(users.size(), result.size());
+    }
+
+    @Test
+    public void testSaveUser(){
+        MockitoAnnotations.openMocks(this);
+        User user = new User();
+        when(userRepository.save(any(User.class))).thenReturn(user);
+        assertEquals(user, userService.save(user));
     }
 
     @AfterEach
